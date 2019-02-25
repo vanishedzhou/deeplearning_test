@@ -44,8 +44,9 @@ y2 = np.cos(x)
 #plt.ylim(-0.1, 1.1)
 #plt.show()
 
-x = np.arange(-5,5,0.1)
-y = np.maximum(0, x)
-plt.plot(x, y)
-plt.show()
+# rectified linear unit , ReLU
+#x = np.arange(-5,5,0.1)
+#y = np.maximum(0, x)
+#plt.plot(x, y)
+#plt.show()
 
