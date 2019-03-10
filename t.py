@@ -3,7 +3,7 @@ import tkinter
 import os,sys
 import numpy as np
 import matplotlib
-matplotlib.use('TkAgg')
+matplotlib.use('qt5agg')
 import matplotlib.pyplot as plt
 
 X = np.random.normal(size=(12, 2))
