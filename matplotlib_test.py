@@ -50,3 +50,9 @@ y2 = np.cos(x)
 #plt.plot(x, y)
 #plt.show()
 
+# 导数
+x = np.arange(0,20,0.1)
+y = 0.01*x**2 + 0.1*x
+#y = np.sum(x**2)
+plt.plot(x, y)
+plt.show()

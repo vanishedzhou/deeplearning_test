@@ -37,9 +37,35 @@ def batch_cross_entropy_error(y, t):
     if t.ndim == 1:
         # if y = np.array([1,2,3]) , change to y = np.array([[1,2,3]), 便于统一计算
         y = y.reshape(1, y.size)
-        t = t.reshape(1,2 t.size)
+        t = t.reshape(1, t.size)
     batch_size = y.shape[0]
     return -np.sum(t * np.log(y + delta)) / batch_size
+
+# 数值微分求近似倒数值
+def numerical_diff(f, x):
+    h = 1e-4
+    return (f(x+h) - f(x-h)) / (2 * h)
+
+"""
+梯度所指的方向是各点处的函数值减小最多的方向
+"""
+def numerical_gradient(f, x):
+    h = 1e-4
+    grad = np.zeros_like(x)
+
+    for idx in range(x.size):
+        tmp_val = x[idx]
+        x[idx] = tmp_val + h
+        f1 = f(x)
+        x[idx] = tmp_val - h
+        f2 = f(x)
+        g = (f1 - f2) / (2 * h)
+        x[idx] = tmp_val
+        grad[idx] = g
+    return grad
+
+def f(x):
+    return x[0]**2 + x[1]**2
 
 if __name__ == "__main__":
     # test softmax
@@ -48,11 +74,18 @@ if __name__ == "__main__":
     #print (result)
 
     # test mean_square_error
-    y = np.array([0.1, 0.6, 0.1, 0.2])
-    t = np.array([0, 1, 0, 0])
-    mse = mean_square_error(y, t)
-    print (mse)
+    #y = np.array([0.1, 0.6, 0.1, 0.2])
+    #t = np.array([0, 1, 0, 0])
+    #mse = mean_square_error(y, t)
+    #print (mse)
+
     # test cross_entropy_error
-    cee = cross_entropy_error(y, t)
-    print (cee)
+    #cee = cross_entropy_error(y, t)
+    #print (cee)
+
+    # test gradient
+    x = np.array([3.0, 4.0])
+    print (f(x))
+    print (numerical_gradient(f, x))
+
 
