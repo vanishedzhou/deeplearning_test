@@ -35,7 +35,7 @@ def batch_cross_entropy_error(y, t):
     # 防止y为0时值变为无穷
     delta = 1e-7
     if t.ndim == 1:
-        # if y = np.array([1,2,3]) , change to y = np.array([[1,2,3]), 便于统一计算
+        # if y = np.array([1,2,3]) , change to y = np.array([[1,2,3]]), 便于统一计算
         y = y.reshape(1, y.size)
         t = t.reshape(1, t.size)
     batch_size = y.shape[0]
@@ -74,14 +74,14 @@ if __name__ == "__main__":
     #print (result)
 
     # test mean_square_error
-    #y = np.array([0.1, 0.6, 0.1, 0.2])
-    #t = np.array([0, 1, 0, 0])
+    y = np.array([0.1, 0.6, 0.1, 0.2])
+    t = np.array([0, 1, 0, 0])
     #mse = mean_square_error(y, t)
     #print (mse)
 
     # test cross_entropy_error
-    #cee = cross_entropy_error(y, t)
-    #print (cee)
+    cee = cross_entropy_error(y, t)
+    print (cee)
 
     # test gradient
     x = np.array([3.0, 4.0])

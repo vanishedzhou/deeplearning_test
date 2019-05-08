@@ -6,10 +6,17 @@ import matplotlib.pyplot as plt
 from matplotlib.image import imread
 import numpy as np
 import math
+import sys
 
-x = np.arange(0, 6, 0.1)
-y = np.sin(x)
-y2 = np.cos(x)
+dz_rate = 0.579
+if len(sys.argv) > 1:
+    dz_rate = float(sys.argv[1])
+x = np.arange(0, 1, 0.001)
+y = dz_rate - (dz_rate - x) / (1 - x)
+print("dz_rate:" + str(dz_rate))
+plt.axis([0,0.1,0,0.08])
+plt.plot(x, y)
+plt.show()
 
 #plt.figure()
 #plt.plot(x,y,label="sin")
@@ -51,8 +58,8 @@ y2 = np.cos(x)
 #plt.show()
 
 # 导数
-x = np.arange(0,20,0.1)
-y = 0.01*x**2 + 0.1*x
+#x = np.arange(0,20,0.1)
+#y = 0.01*x**2 + 0.1*x
 #y = np.sum(x**2)
-plt.plot(x, y)
-plt.show()
+#plt.plot(x, y)
+#plt.show()
